@@ -1,0 +1,26 @@
+---
+title: "Exercício de Aula"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+O objetivo deste exercício é realizar uma análise descritiva de um conjunto de dados de exportações e produzir um relatório usando Rmarkdown com os resultados.
+
+* Faça a importação dos dados de exportação disponíveis na página do github do curso.
+
+* Descreva o conjunto de dados em relação à suas dimensões e os tipos de variáveis observadas
+
+* Qual a UF com mais registros nas exportações observadas?
+
+* Como é a distribuição do peso em relação à via de exportação?
+
+* Como são as distribuições dos valores __VL_FOB__ para os 5 países com mais registros?
+
+* Qual é a UF que apresentou o maior valor de **VL_FOB**?
+
+* Qual é o país com maior valor total de **VL_FOB**?
+
+* Apresente gráficos relevantes para compreensão dos dados.
