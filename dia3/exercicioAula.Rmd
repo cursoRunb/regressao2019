@@ -1,0 +1,26 @@
+---
+title: "Exercício de Aula"
+author: ""
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Faça a leitura de dados de importação disponíveis no endereço :
+
+https://raw.githubusercontent.com/gustavopompeu/ENAP/master/IMP_2019_MUN.txt
+
+
+* Apresente uma análise descritiva dos dados.
+
+* Apresente um intervalo de confiança com $\Gamma=0,95$ para a média de peso das importações.
+
+* Existe diferença significativa no valor médio das importações do primeiro trimestre em relação ao segundo trimestre?
+
+* É possível afirmar que a média do valor das importações do país com mais registros é superior a 120000US$? Apresente um teste de hipóteses.
+
+* Qual a probabilidade do erro tipo II para o teste anterior caso a média populacional seja igual a 130000US$?
+
+* 
