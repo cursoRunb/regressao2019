@@ -1,0 +1,22 @@
+---
+title: "Exercício de Aula"
+author: ""
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Faça a leitura dos dados referentes à abertura de custos operacionais das distribuidoras de energia elétrica disponíveis no endereço:
+
+https://raw.githubusercontent.com/gustavopompeu/ENAP/master/Regressao/Abertura_CO.csv
+
+
+* Apresente um sumário das primeiras 10 colunas da base de dados.
+
+* Faça um gráfico de dispersão entre as variáveis DEC Apurada e FEC Apurada.
+
+* Faça um modelo de regressão linear simples entre as 2 variáveis citadas acima, e adicione a reta de regressão ajustada no gráfico.
+
+* Repita os 2 itens anteriores mas apenas para observações do ano de 2018. Identifique a empresa que representa o ponto mais distante da reta.
