@@ -1,0 +1,27 @@
+---
+title: "Exercício de Aula"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Faça a importação dos dados de:
+
+https://raw.githubusercontent.com/gustavopompeu/ENAP/master/TarifaFornecimentoResidencial.csv
+
+* Ajuste um modelo de regressão para o valor da TarifaBrancaPonta considerando o valor de taxa de uso do sistema de distribuição VLRTUSD
+
+* Apresente um intervalo com $90\%$ de confiança para os parâmetros do modelo e interprete os resultados.
+
+* Apresente o gráfico com o ajuste da reta de regressão
+
+* Faça uma análise gráfica dos resíduos. (Tem distribuição Normal?, Homogeneidade de variâncias?)
+
+* Apresente e Interprete os resultados de um teste  _shapiro.test_ sobre dados em análise.
+
+* Qual foi a distribuidora que cobrou a tarifa mais cara acima do valor predito pelo modelo?
+
+* Qual foi a distribuidora que cobrou a tarifa mais barata abaixo do valor predito pelo modelo?
+
