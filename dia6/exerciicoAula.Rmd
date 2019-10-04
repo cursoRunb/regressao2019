@@ -1,0 +1,30 @@
+---
+title: "Exercício de Aula"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Faça a importação dos dados em:
+
+"https://raw.githubusercontent.com/gustavopompeu/ENAP/master/Regressao/SIOP.csv"
+
+* Faça uma análise descritiva dos dados. 
+
+* Apresente um diagrama de dispersão entre a dotação inicial e o valor pago
+
+* Ajuste um modelo de regressão entre essas duas variáveis. 
+
+* Existem outliers nesse conjunto de dados? Ajuste um novo modelo após a exclusão de um ou dois outliers e compare os resultados.
+
+* Faça uma análise de diagnóstico do modelo.
+
+## Exercício para o relatório final
+
+* Encontre um conjunto de dados de seu interesse em que as técnicas de regressão possam ser utilizadas. 
+
+* Apresente uma análise descritiva dos dados
+
+* Ajuste um modelo de regressão simples considerando as variáveis mais importantes. 
