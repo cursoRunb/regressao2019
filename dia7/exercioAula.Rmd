@@ -1,0 +1,30 @@
+---
+title: "Exercício de Aula"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Faça a importação dos dados em:
+
+"https://raw.githubusercontent.com/gustavopompeu/ENAP/master/TarifaFornecimentoResidencial.csv"
+
+* Faça uma análise descritiva dos dados. 
+
+* Apresente um diagrama de dispersão entre as variáveis quantitativas
+
+* Considerando como variável resposta a variável TRFBrancaPonta ajuste um modelo de regressão usando as demais variáveis. 
+
+* Interprete os resultados do modelo
+
+* Faça uma análise de diagnóstico do modelo.
+
+## Exercício para o relatório final
+
+* Encontre um conjunto de dados de seu interesse em que as técnicas de regressão possam ser utilizadas. 
+
+* Apresente uma análise descritiva dos dados
+
+* Ajuste um modelo de regressão múltipla considerando as variáveis mais importantes. 
