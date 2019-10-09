@@ -1,0 +1,553 @@
+\documentclass{beamer}  % For use with beamer v 2.20
+
+\usetheme{Rochester}
+
+\useinnertheme{rounded}
+\usecolortheme{seahorse}
+\usefonttheme{structuresmallcapsserif}
+
+
+\usepackage{pgfarrows}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{here}
+\usepackage{verbatim}
+\usepackage[all]{xy}
+
+
+\begin{document}
+
+\frame{\frametitle{Estimação pontual da média da variável resposta}
+
+Dados os estimadores $\hat{\beta_0}$ e $\hat{\beta_1}$ dos parâmetros da função de regressão:
+\begin{eqnarray*}\label{freg}
+E(Y)= \beta_0 + \beta_1 X
+\end{eqnarray*}
+
+A função de regressão estimada é dada por:
+\begin{eqnarray*}\label{fregesti}
+\hat{Y}=\hat{E(Y)} = \hat{\beta_0} + \hat{\beta_1} X,
+\end{eqnarray*}
+em que $\hat{Y}$ é o valor estimado da média da distribuição de $Y$, dado a informação da variável explicativa $X$.
+}
+
+\frame{\frametitle{Estimação pontual da média da variável resposta}
+
+Pode ser mostrado como uma extensão do \textbf{Teorema de Gauss Markov} que:
+\begin{itemize}
+\item $\hat{Y}$ é um estimador não viesado de $E(Y)$,
+\item com variância mínima na classe de estimadores lineares não viesados.
+\end{itemize} 
+\vspace{0.5cm}
+Para as observações da amostra, o valor estimado para $i$-ésima observação é dado por:
+\begin{eqnarray*}\label{fregestii}
+\hat{Y_i}= \hat{\beta_0} + \hat{\beta_1} X_i,
+\end{eqnarray*}
+em que $i=1,\ldots, n$.
+}
+
+
+\frame{\frametitle{Resíduo do Modelo}
+\begin{itemize}
+\item O $i$-ésimo \textbf{resíduo} é a diferença entre o valor observado $Y_i$ e seu correspondente valor estimado $\hat{Y_i}$.
+\item O resíduo é denotado por $e_i$ e é definido por:
+\begin{eqnarray*}\label{residuo}
+e_i= Y_i - \hat{Y_i}.
+\end{eqnarray*}
+O resíduo é representado por:
+\begin{eqnarray*}\label{residuoMod}
+e_i= Y_i - (\hat{\beta_0} + \hat{\beta_1} X) = Y_i - \hat{\beta_0} - \hat{\beta_1}X.
+\end{eqnarray*}
+\item Os resíduos são \textbf{importantes} para estudar se o modelo de regressão é apropriado para analisar os dados em estudo.
+\end{itemize}
+
+}
+
+\frame{\frametitle{Atenção!!!}
+
+É importante distinguir entre:
+\begin{itemize}
+\item Erro do modelo:
+\begin{eqnarray*}\label{erro}
+\varepsilon_i= Y_i - E(Y_i),
+\end{eqnarray*}
+e
+\vspace{0.5cm}
+\item Resíduo: 
+\begin{eqnarray*}\label{residuoMod}
+e_i= Y_i - \hat{Y_i}.
+\end{eqnarray*}
+\end{itemize}
+}
+
+
+\frame{\frametitle{Propriedades da Reta de Regressão estimada}
+\begin{itemize}
+\item[1.] A soma dos resíduos do modelo de regressão é \textbf{ZERO}:
+\begin{eqnarray*}\label{prop1}
+\sum_{i=1}^{n}(Y_i - \hat{Y_i})=\sum_{i=1}^{n} e_i=0
+\end{eqnarray*}
+
+\item[2.] A soma do quadrado do resíduo, $\sum_{i=1}^{n} e_{i}^{2}$, é um mínimo.
+
+$\Longrightarrow$ Pressuposto a ser satisifeito na dedução dos estimadores de mínimos quadrados.
+
+\end{itemize}
+
+}
+
+\frame{\frametitle{Propriedades da Reta de Regressão estimada}
+\begin{itemize}
+\item[3.] A soma dos valores observados $Y_i$, é igual a soma dos valores estimados $\hat{Y_i}$:
+\begin{eqnarray*}\label{prop3}
+\sum_{i=1}^{n}Y_i = \sum_{i=1}^{n}\hat{Y_i}
+\end{eqnarray*}
+
+\item[4.] A soma ponderada dos resíduos é \textbf{ZERO} quando o resíduo da $i$-ésima observação é ponderado pelo nível da variável explicativa da $i$-ésima observação:
+
+\begin{eqnarray*}\label{prop4}
+\sum_{i=1}^{n} X_i e_i=0
+\end{eqnarray*}
+
+\end{itemize}
+
+}
+
+\frame{\frametitle{Propriedades da Reta de Regressão estimada}
+\begin{itemize}
+
+\item[5.] A soma ponderada dos resíduos é \textbf{ZERO} quando o resíduo da $i$-ésima observação é ponderado pelo valor estimado da variável resposta da $i$-ésima observação:
+
+\begin{eqnarray*}\label{prop5}
+\sum_{i=1}^{n} \hat{Y_i} e_i=0
+\end{eqnarray*}
+
+\vspace{0.3cm}
+
+\item[6.] A reta de regressão sempre passa através do ponto $(\bar{X},\bar{Y})$.
+\end{itemize}
+
+}
+
+\frame{\frametitle{Estimação da Variância do Erro}
+
+A variância $\sigma^{2}$ do erro $\varepsilon_i$ do modelo de regressão precisa ser estimada por alguns motivos:
+\vspace{0.3cm}
+\begin{itemize}
+\item $\mbox{Var}(Y_i)= \mbox{Var}(\varepsilon_i)=\sigma^{2}$ - estimar $\sigma^{2}$ para obter uma indicação da variabilidade da distribuição de probabilidade de $Y$,
+\vspace{0.3cm}
+\item Para construir Intervalos de Confiança e Testes de Hipóteses dos parâmetros $\beta_0$ e $\beta_1$,
+\vspace{0.3cm}
+\item Para fazer predição de $Y$.
+\end{itemize}
+
+
+}
+
+\frame{\frametitle{Revisando}
+
+Na amostragem de uma população, a variância $\sigma^{2}$, é estimada pela variância da amostra $s^{2}$:
+\vspace{0.3cm}
+\begin{eqnarray*}\label{varsimples}
+s^{2}= \frac{\sum_{i=1}^{n}(Y_i - \bar{Y})^{2}}{n-1},
+\end{eqnarray*}
+em que:
+\vspace{0.3cm}
+\begin{itemize}
+\item $Y_i - \bar{Y}$ - são os desvios de $Y_i$ em torno da média estimada,
+\item $\sum_{i=1}^{n}(Y_i - \bar{Y})^{2}$ - Soma de quadrados,
+\item $n-1$ graus de liberdade.
+\end{itemize}
+}
+
+\frame{\frametitle{Estimação da Variância do Erro}
+
+Ao considerar o modelo de regressão linear simples, o desvio de uma observação $Y_i$ deve ser calculado em torno da sua própria média estimada $\hat{\mbox{E}(Y_i)}=\hat{Y_i}$. Esses desvios são os resíduos:
+\begin{eqnarray*}\label{residuoMod}
+e_i= Y_i - \hat{Y_i}.
+\end{eqnarray*}
+Dessa forma, o estimador da variância $\sigma^{2}$ do erro $\varepsilon_i$ é:
+\begin{eqnarray}\label{estivariancia}
+\hat{\sigma}^{2}= \frac{\sum_{i=1}^{n}(Y_i - \hat{Y_i})^{2}}{n-2}= \frac{\sum_{i=1}^{n}e_{i}^{2}}{n-2}= \frac{\mbox{SQRes}}{n-2}=\mbox{MSRes},
+\end{eqnarray}
+%\vspace{0.1cm}
+\begin{itemize}
+\item $\sum_{i=1}^{n}(Y_i - \hat{Y_i})^{2}$ - Soma de quadrados do resíduo - SQRes,
+\item $n-2$ graus de liberdade,
+\item MSRes - quadrado médio do resíduo
+\item é um estimador não viesado de $\sigma^{2}$ para o modelo de regressão.
+\end{itemize}
+}
+
+\frame{\frametitle{Estimação da Variância do Erro}
+
+Consequentemente, um estimador para $\sigma$ é:
+\vspace{0.5cm}
+$$
+\hat{\sigma}=\sqrt{\hat{\sigma}^{2}}=\sqrt{\mbox{MSRes}}.
+$$
+
+}
+
+\frame{\frametitle{Variância de $\hat{\beta_1}$ e $\hat{\beta_0}$}
+
+Pode-se encontrar a variância de $\hat{\beta_1}$ e $\hat{\beta_0}$, respectivamente, por:
+\vspace{0.3cm}
+\begin{eqnarray*}\label{varbeta1}
+Var(\hat{\beta_1})= \frac{\sigma^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}=\frac{\sigma^{2}}{SQ_{XX}},
+\end{eqnarray*}
+\vspace{0.3cm}
+e
+\vspace{0.3cm}
+\begin{eqnarray*}\label{varbeta0}
+Var(\hat{\beta_0})= \sigma^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]= \sigma^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{SQ_{XX}}\Bigg].
+\end{eqnarray*}
+
+}
+
+\frame{\frametitle{Estimador da Variância dos parâmetros}
+Ao considerar o estimador da variância $\sigma^{2}$ definido em (\ref{estivariancia}), temos:
+\begin{itemize}
+\item Estimador da variância de $\hat{\beta_1}$:
+\begin{eqnarray*}\label{estvarbeta1}
+\hat{\mbox{Var}(\hat{\beta_1})}= \frac{\hat{\sigma}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}=\frac{\hat{\sigma}^{2}}{SQ_{XX}},
+\end{eqnarray*}
+\vspace{0.3cm}
+\item Estimador da variância de $\hat{\beta_0}$:
+\begin{eqnarray*}\label{estvarbeta0}
+\hat{\mbox{Var}(\hat{\beta_0})}= \hat{\sigma}^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]= \hat{\sigma}^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{SQ_{XX}}\Bigg].
+\end{eqnarray*}
+\end{itemize}
+
+}
+
+
+\frame{\frametitle{Distribuição amostral}
+Ao considerar as hipóteses do modelo:
+\vspace{0.3cm}
+\begin{itemize}
+\item E($\varepsilon_{i}$)=0
+\item Var($\varepsilon_{i}$)= $\sigma^{2}$
+\item Cov($\varepsilon_{i},\varepsilon_{j}$) para todo $i,j;i\neq j$
+\item $\varepsilon_{i}$ são independentes e identicamente distribuidos: N(0,$\sigma^{2}$)
+\end{itemize}
+\vspace{0.6cm}
+A distribuição de probabilidade de $Y_i=\beta_0 + \beta_1 X_i + \varepsilon_{i}$ é:
+N($\beta_0 + \beta_1 X_i,\sigma^{2}$).
+
+}
+
+\frame{\frametitle{Distribuição amostral de $\beta_1$}
+Como $\hat{\beta_1}$ é uma combinação linear das observações $Y_i$ (variáveis normais independentes):
+\vspace{0.6cm}
+\begin{eqnarray*}\label{distbeta1}
+\hat{\beta_1} \sim N\Bigg(\beta_1,\frac{\sigma^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg).
+\end{eqnarray*}
+
+A estatística padronizada:
+\begin{eqnarray*}\label{distbeta1pad}
+\frac{(\hat{\beta_1} -\beta_1)}{\sqrt{\mbox{Var}(\hat{\beta_1})}}= \frac{(\hat{\beta_1} -\beta_1)}{\sqrt{\frac{\sigma^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}}},
+\end{eqnarray*}
+tem distribuição Normal padrão, N(0,1).
+}
+
+
+\frame{\frametitle{Distribuição amostral de $\beta_1$ }
+
+Como é preciso estimar $\mbox{Var}(\hat{\beta_1})$ por 
+$\hat{\mbox{Var}(\hat{\beta_1})}$, a estatística:
+
+\begin{eqnarray*}\label{distbeta1padest}
+\frac{(\hat{\beta_1} -\beta_1)}{\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}}}= \frac{(\hat{\beta_1} -\beta_1)}{\sqrt{\frac{\hat{\sigma}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}}},
+\end{eqnarray*}
+\vspace{1.8cm}
+tem distribuição $t$-Student(n-2) para o modelo definido.
+}
+
+
+\frame{\frametitle{Intervalo de Confiança para $\beta_1$ }
+
+Ao considerar o resultado do slide anterior, escrevemos a seguinte probabilidade:
+\begin{eqnarray*}\label{ICbeta1}
+P\Bigg( t_{(\alpha/2; n-2)}\leq \frac{(\hat{\beta_1} -\beta_1)}{\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}}} \leq  t_{(1-\alpha/2; n-2)} \Bigg)= 1-\alpha
+\end{eqnarray*}
+Devido a simetria da distribuição $t$-Student, temos que:
+\begin{eqnarray*}
+t_{(\alpha/2, n-2)} = -t_{(1-\alpha/2; n-2)},
+\end{eqnarray*}
+logo:
+\begin{eqnarray*}\label{ICbeta1}
+P\Bigg( -t_{(1-\alpha/2; n-2)}\leq \frac{(\hat{\beta_1} -\beta_1)}{\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}}} \leq  t_{(1-\alpha/2; n-2)} \Bigg)= 1-\alpha
+\end{eqnarray*}
+}
+
+%\frame{\frametitle{Intervalo de Confiança para $\beta_1$ }
+
+%Consequentemente,
+%\begin{eqnarray*}\label{ICbeta1}
+%P\Bigg(\hat{\beta_1} -t_{(1-\alpha/2; %n-2)}\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}} \leq \beta_1 %\leq \hat{\beta_1} +  t_{(1-\alpha/2; %n-2)}\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}} \Bigg)= %1-\alpha
+%\end{eqnarray*}
+
+%}
+
+
+\frame{\frametitle{Intervalo de Confiança para $\beta_1$ }
+Dessa forma, um Intervalo de Confiança $(1 - \alpha )$ para o
+parâmetro $\beta_1$ do modelo de regressão linear simples é
+dado por:
+\small
+\begin{eqnarray*}\label{ICbeta1}
+IC(\beta_1,(1-\alpha))=\Bigg(\hat{\beta_1} -t_{(1-\alpha/2; n-2)}\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}} ; \hat{\beta_1} + t_{(1-\alpha/2; n-2)}\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}} \Bigg),
+\end{eqnarray*}
+ao substituir o intervalo pelo estimador da variância de $\hat{\beta_1}$, o intervalo é definido por:
+
+\scriptsize
+\begin{eqnarray*}\label{ICbeta1}
+IC(\beta_1,(1-\alpha))=\Bigg(\hat{\beta_1} -t_{(1-\alpha/2; n-2)}\sqrt{\frac{\hat{\sigma}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}} ; \hat{\beta_1} + t_{(1-\alpha/2; n-2)}\sqrt{\frac{\hat{\sigma}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}} \Bigg).
+\end{eqnarray*}
+}
+
+
+\frame{\frametitle{Teste de hipótese para $\beta_1$ }
+\begin{itemize}
+\item Suponha que desejamos testar a hipótese de que o coeficiente angular é igual a uma constante, $\beta_{10}$. As hipóteses são:
+\begin{eqnarray*}
+H_0: \beta_1 = \beta_{10} \\
+H_1: \beta_1 \neq \beta_{10}
+\end{eqnarray*}
+\vspace{0.5cm}
+\item Supondo $H_0$ verdadeira, a estatística do teste é dada por:
+\begin{eqnarray*}\label{distbeta1padest}
+t=\frac{\hat{\beta_1} -\beta_{10}}{\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}}},
+\end{eqnarray*}
+\vspace{1.8cm}
+e tem distribuição $t$-Student com (n-2) graus de liberdade.
+
+
+\end{itemize}
+
+}
+
+
+
+\frame{\frametitle{Teste de hipótese para $\beta_1$ }
+\begin{itemize}
+\item Um particular teste de hipótese para o coeficiente angular:
+\begin{eqnarray*}
+H_0: \beta_1 = 0 \\
+H_1: \beta_1 \neq 0
+\end{eqnarray*}
+Ou seja,
+\begin{eqnarray*}
+H_0: \mbox{ausência de regressão}\\
+H_1: \mbox{existe regressão}
+\end{eqnarray*}
+\vspace{0.3cm}
+\item Supondo $H_0$ verdadeira, a estatística do teste é dada por:
+\begin{eqnarray*}\label{distbeta1padest}
+t=\frac{\hat{\beta_1} - 0}{\sqrt{\hat{\mbox{Var}(\hat{\beta_1})}}},
+\end{eqnarray*}
+\vspace{1.8cm}
+e tem distribuição $t$-Student com (n-2) graus de liberdade.
+
+
+\end{itemize}
+
+}
+
+\frame{\frametitle{Teste de hipótese para $\beta_1$ }
+\begin{itemize}
+\item Fixando o nível de siginificância, $\alpha$, define-se a região crítica ou de rejeição do teste,
+\vspace{0.5cm}
+\item Seja $t$ o valor da estatística do teste para a amostra obtida:
+\vspace{0.5cm}
+\begin{itemize}
+\item Se $t \in (-t_{1-\alpha/2}, t_{1-\alpha/2})$, então não há evidências para rejeitar $H_0$,
+\vspace{0.3cm}
+\item Se $t$ não pertence $(-t_{1-\alpha/2}, t_{1-\alpha/2})$, então há evidências para rejeitar $H_0$
+\end{itemize}
+\end{itemize}
+
+}
+
+\frame{\frametitle{Distribuição amostral de $\beta_0$}
+Como $\hat{\beta_0}$ é uma combinação linear das observações $Y_i$ (variáveis normais independentes):
+\vspace{0.6cm}
+\begin{eqnarray*}\label{distbeta1}
+\hat{\beta_0} \sim N\Bigg(\beta_0,\sigma^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]\Bigg).
+\end{eqnarray*}
+
+A estatística padronizada:
+\begin{eqnarray*}\label{distbeta1pad}
+\frac{(\hat{\beta_0} -\beta_0)}{\sqrt{\mbox{Var}(\hat{\beta_0})}}= \frac{(\hat{\beta_0} -\beta_0)}{\sqrt{\sigma^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]}},
+\end{eqnarray*}
+tem distribuição Normal padrão, N(0,1).
+}
+
+
+\frame{\frametitle{Distribuição amostral de $\beta_0$ }
+
+Como é preciso estimar $\mbox{Var}(\hat{\beta_0})$ por 
+$\hat{\mbox{Var}(\hat{\beta_0})}$, a estatística:
+
+\begin{eqnarray*}\label{distbeta1padest}
+\frac{(\hat{\beta_0} -\beta_0)}{\sqrt{\hat{\mbox{Var}(\hat{\beta_0})}}}= \frac{(\hat{\beta_0} -\beta_0)}{\sqrt{\hat{\sigma}^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]}},
+\end{eqnarray*}
+\vspace{1.8cm}
+tem distribuição $t$-Student(n-2) para o modelo definido.
+}
+
+
+\frame{\frametitle{Intervalo de Confiança para $\beta_0$ }
+
+Ao considerar o resultado do slide anterior, escrevemos a seguinte probabilidade:
+\begin{eqnarray*}\label{ICbeta1}
+P\Bigg( t_{(\alpha/2; n-2)}\leq \frac{(\hat{\beta_0} -\beta_0)}{\sqrt{\hat{\mbox{Var}(\hat{\beta_0})}}} \leq  t_{(1-\alpha/2; n-2)} \Bigg)= 1-\alpha
+\end{eqnarray*}
+Devido a simetria da distribuição $t$-Student, temos que:
+\begin{eqnarray*}
+t_{(\alpha/2, n-2)} = -t_{(1-\alpha/2; n-2)},
+\end{eqnarray*}
+logo:
+\begin{eqnarray*}\label{ICbeta1}
+P\Bigg( -t_{(1-\alpha/2; n-2)}\leq \frac{(\hat{\beta_0} -\beta_0)}{\sqrt{\hat{\mbox{Var}(\hat{\beta_0})}}} \leq  t_{(1-\alpha/2; n-2)} \Bigg)= 1-\alpha
+\end{eqnarray*}
+}
+
+
+
+
+\frame{\frametitle{Intervalo de Confiança para $\beta_0$ }
+Dessa forma, um Intervalo de Confiança $(1 - \alpha )$ para o
+parâmetro $\beta_0$ do modelo de regressão linear simples é
+dado por:
+\small
+\begin{eqnarray*}\label{ICbeta1}
+IC(\beta_0,(1-\alpha))=\Bigg(\hat{\beta_0} -t_{(1-\alpha/2; n-2)}\sqrt{\hat{\mbox{Var}(\hat{\beta_0})}} ; \hat{\beta_0} + t_{(1-\alpha/2; n-2)}\sqrt{\hat{\mbox{Var}(\hat{\beta_0})}} \Bigg),
+\end{eqnarray*}
+ao substituir o intervalo pelo estimador da variância de $\hat{\beta_0}$, o intervalo é definido por:
+
+\tiny
+\begin{eqnarray*}\label{ICbeta1}
+IC(\beta_0,(1-\alpha))=\Bigg(\hat{\beta_0} -t_{(1-\alpha/2; n-2)}\sqrt{\hat{\sigma}^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]} ; \hat{\beta_0} + t_{(1-\alpha/2; n-2)} \sqrt{\hat{\sigma}^{2}.\Bigg[\frac{1}{n} + \frac{\bar{X}^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]} \Bigg).
+\end{eqnarray*}
+
+
+
+}
+
+\frame{\frametitle{Teste de hipótese para $\beta_0$ }
+\begin{itemize}
+\item Suponha que desejamos testar a hipótese de que o intercepto é igual a uma constante, $\beta_{00}$. As hipóteses são:
+\begin{eqnarray*}
+H_0: \beta_0 = \beta_{00} \\
+H_1: \beta_0 \neq \beta_{00}
+\end{eqnarray*}
+\vspace{0.5cm}
+\item Supondo $H_0$ verdadeira, a estatística do teste é dada por:
+\begin{eqnarray*}\label{distbeta1padest}
+t=\frac{\hat{\beta_0} -\beta_{00}}{\sqrt{\hat{\mbox{Var}(\hat{\beta_0})}}},
+\end{eqnarray*}
+\vspace{1.8cm}
+e tem distribuição $t$-Student com (n-2) graus de liberdade.
+
+
+\end{itemize}
+
+}
+
+\frame{\frametitle{ Distribuição amostral de $\hat{Y_0}=\hat{\mbox{E}(Y_0)}$ }
+
+\begin{itemize}
+
+\item Para cada $X_0$, nível da variável explicativa, $X$, desejamos estimar a resposta média $\mbox{E}(Y_0)=\mbox{E}(Y_0|X=X_0)= \beta_0 + \beta_1 X_0$,
+\item $X_0$ pode ser:
+   \begin{itemize}
+   \item um particular valor que ocorreu na amostra;
+   \item qualquer valor da variável explicativa, $X$, que esteja dentro do alcance do modelo. 
+   \end{itemize}
+
+\item Um estimador pontual do valor esperado de $Y$ já foi definido anteriormente por:
+\begin{eqnarray*}
+\hat{Y}=\hat{\mbox{E}(Y)}= \hat{\beta_0} + \hat{\beta_1}X
+\end{eqnarray*}
+
+\item Ao considerar um particular valor da variável explicativa, $X_0$, o estimador do valor esperado de $Y_0$ é:
+\begin{eqnarray} \label{estiyx0}
+\hat{Y_0}=\hat{\mbox{E}(Y_0)}= \hat{\beta_0} + \hat{\beta_1}X_0
+\end{eqnarray}
+\end{itemize}
+
+}
+
+
+\frame{\frametitle{ Distribuição amostral de $\hat{Y_0}=\hat{\mbox{E}(Y_0)}$ }
+
+\begin{itemize}
+\item A distribuição amostral de $\hat{Y_0}$, refere-se a diferentes valores de $\hat{Y_0}$ que seriam obtidos se amostras repetidas são selecionadas, cada uma mantendo os níveis da variável regressora $X$ constante, e calculando $\hat{Y_0}$ para cada amostra.
+\vspace{0.3cm}
+\item Para o modelo de regressão linear simples, a distribuição amostral de $\hat{Y_0}$ é Normal com média e variância dadas por:
+\vspace{0.3cm}
+\item $\mbox{E}(\hat{Y_0})=\mbox{E}(\hat{\mbox{E}(Y_0)}) =\mbox{E}(Y_0)$
+
+\vspace{0.2cm}
+
+e
+
+\item $\mbox{Var}(\hat{Y_0})= \sigma^{2}\Bigg[\frac{1}{n} + \frac{(X_{0}-\bar{X})^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]$.
+\end{itemize}
+}
+
+\frame{\frametitle{ Distribuição amostral de $\hat{Y_0}=\hat{\mbox{E}(Y_0)}$ }
+
+\begin{itemize}
+
+\item Ao considerar o estimador da variância $\sigma^{2}$, a variância de $\mbox{Var}(\hat{Y_0})$ estimada é dada por:
+$$\hat{\mbox{Var}(\hat{Y_0})}= \hat{\sigma}^{2}\Bigg[\frac{1}{n} + \frac{(X_{0}-\bar{X})^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]$$
+\vspace{0.5cm}
+\item Observações:
+ \begin{itemize}
+ \item A variabilidade de $\hat{Y_0}$ é afetada pela distância entre $X_0$ e $\bar{X}$,
+ \item Quando $X_0=0$, a variância de $\hat{Y_0}$ reduz a variância de $\hat{\beta}_0$ e a estimativa da variância de $\hat{Y_0}$ reduz a $\hat{\mbox{Var}(\hat{\beta_0})}$., 
+ \end{itemize}
+\end{itemize}
+
+}
+
+
+\frame{\frametitle{ Distribuição amostral de $\hat{Y_0}=\hat{\mbox{E}(Y_0)}$ }
+
+\begin{itemize}
+\item Ao considerar a distribuição de $\hat{Y_0}$, a estatística:
+\begin{eqnarray}\label{estEY}
+\frac{\hat{Y_0} - \mbox{E}(Y_0)}{\hat{\mbox{Var}(\hat{Y})}}
+\end{eqnarray}
+
+tem distribuição $t$-Studente com $(n-2)$ graus de liberdade para o modelo de regressão linear simples. 
+\end{itemize}
+
+}
+
+
+\frame{\frametitle{Intervalo de Confiança  }
+
+
+\begin{itemize}
+\item Ao considerar a distribuição de $\hat{Y_0}$, um Intervalo de Confiança ($1-\alpha$) para E($Y_0$) é dado por:
+
+\begin{eqnarray*}
+IC(\mbox{E}(Y_0);1-\alpha)= \Bigg( \hat{Y_0} - t_{(1 - \alpha/2;n-2)}\hat{\sigma}\sqrt{A} ;  \hat{Y_0} + t_{(1 - \alpha/2;n-2)} \hat{\sigma}\sqrt{A}\Bigg )
+\end{eqnarray*}
+em que
+$A=\Bigg[\frac{1}{n} + \frac{(X_{0}-\bar{X})^{2}}{\sum_{i=1}^{n}(X_i - \bar{X})^{2}}\Bigg]$.
+
+\end{itemize}
+}
+
+
+
+\end{document}
