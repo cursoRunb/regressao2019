@@ -1,0 +1,27 @@
+---
+title: "Exercício de Aula"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Prezados alunos, por favor respondam ao questionário anônimo de avaliação da disciplina disponível em:
+[https://forms.gle/d9QBbQ6MDfBdM1S46](https://forms.gle/d9QBbQ6MDfBdM1S46)
+
+#Exercício
+
+Faça a importação dos dados em:
+
+"https://raw.githubusercontent.com/gustavopompeu/ENAP/master/Regressao/SIOP_adj.csv"
+
+* A 1ª coluna da base de dados é apenas o ID das observações. As colunas de 2 a 6 são códigos, logo são variáveis qualitativas. O restante das variáveis são quantitativas. Sabendo dessas informações, arrume a base de dados.
+
+* Faça uma análise descritiva dos dados. 
+
+* Ajuste um modelo de regressão logística tendo como variável resposta a variável Grupo.de.Despesa, e todas as outras como variáveis resposta.
+
+* Encontre modelos melhores através de seleção de variáveis.
+
+* Compare a acurácia dos modelos ajustados.
